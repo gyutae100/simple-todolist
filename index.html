@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>운동하기</h1>
+    <button id="add_todo_button_element">목록 추가</button>
+    <ul id="todo_list_ul_element">
+        <li>제목 1</li>
+        <li>제목 2</li>
+        <li>제목 3</li>
+    </ul>
+
+    <script>
+
+        //이벤트 추가 
+        const button_element = document.getElementById("add_todo_button_element");
+        const todo_list_element = document.getElementById("todo_list_ul_element");
+        
+        //todo 목록 추가
+        button_element.addEventListener("click", function(){
+
+            const txt = prompt("입력하세요");
+            const new_todo_element = document.createElement("li");
+            new_todo_element.innerHTML=txt;
+
+            todo_list_element.appendChild(new_todo_element);
+        });
+
+        //목록 클릭하면 타이틀 영역에 목록의 제목 표시
+        todo_list_element.addEventListener("click", function(){
+
+            const all_li_elements = this.getElementsByTagName("li");
+            for(let idx = 0 ; idx < all_li_elements.length ; idx++){
+
+                all_li_elements[idx].style.backgroundColor = "white";
+            }
+
+            const target_event = event.target;
+            target_event.style.backgroundColor ="red";
+
+
+        });
+
+
+    </script>
+    
+</body>
+</html>      
